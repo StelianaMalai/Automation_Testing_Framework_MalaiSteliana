@@ -1,8 +1,9 @@
 import managers.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import pageobjects.ContactPage;
+import pageobjects.HomePage;
+import pageobjects.RegisterPage;
 
 public class TestRunner {
     public static void main(String[] args) {
@@ -11,43 +12,32 @@ public class TestRunner {
 
         /*Test registration flow*/
 
-        WebElement myAccountIcon = webDriverManagerChrome.getWebDriver().findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/a/i"));
-        myAccountIcon.click();
+        HomePage homePage = new HomePage(webDriverManagerChrome.getWebDriver());
+        homePage.navigateToRegisterPage();
 
-        WebElement registerButton = webDriverManagerChrome.getWebDriver().findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/ul/li[1]/a"));
-        registerButton.click();
 
-        WebElement firstNameField = webDriverManagerChrome.getWebDriver().findElement(By.id("input-firstname"));
-        WebElement lastNameField = webDriverManagerChrome.getWebDriver().findElement(By.id("input-lastname"));
-        WebElement emailField = webDriverManagerChrome.getWebDriver().findElement(By.id("input-email"));
-        WebElement telephoneField = webDriverManagerChrome.getWebDriver().findElement(By.id("input-telephone"));
-        WebElement passwordField = webDriverManagerChrome.getWebDriver().findElement(By.id("input-password"));
-        WebElement passwordConfirmField = webDriverManagerChrome.getWebDriver().findElement(By.id("input-confirm"));
-        WebElement privacyPolicyField = webDriverManagerChrome.getWebDriver().findElement(By.xpath("//*[@id=\"content\"]/form/div/div/input[1]"));
-        WebElement continueButton = webDriverManagerChrome.getWebDriver().findElement(By.xpath("//*[@id=\"content\"]/form/div/div/input[2]"));
-
-        firstNameField.sendKeys("Tested");
-        lastNameField.sendKeys("Customer");
-        emailField.sendKeys("testemail@gmail.com");
-        telephoneField.sendKeys("123456789");
-        passwordField.sendKeys("passtest1289");
-        passwordConfirmField.sendKeys("passtest1289");
-        privacyPolicyField.click();
-        continueButton.click();
+        RegisterPage registerPage = new RegisterPage(webDriverManagerChrome.getWebDriver());
+        registerPage.fillInRegisterForm("Tested", "Customer", "til@gmail.com", "06845799", "testedpass");
 
         /*Test log out flow*/
 
         WebElement logOutButton = webDriverManagerChrome.getWebDriver().findElement(By.xpath("//*[@id=\"column-right\"]/div/a[13]"));
         logOutButton.click();
 
+        /*Test Contact us flow*/
+
+        ContactPage contactPage = new ContactPage(webDriverManagerChrome.getWebDriver());
+
+        homePage.navigateToContactPage();
+        contactPage.fillInTheContactForm("Customer", "email@g.com", "Please let me know some details about monitor");
+
         try {
-            Thread.sleep(20000);
+            Thread.sleep(30000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         webDriverManagerChrome.getWebDriver().close();
         webDriverManagerChrome.getWebDriver().quit();
-
     }
 }
