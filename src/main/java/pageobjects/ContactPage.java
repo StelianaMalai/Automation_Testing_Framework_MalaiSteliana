@@ -31,7 +31,7 @@ public class ContactPage extends Page {
         yourNameField.sendKeys(name);
         emailAddressField.sendKeys(email);
         enquiry.sendKeys(enquiery);
-        submitBtn.click();
-        continueBtn.click();
+       submitBtn.click();
+        /*continueBtn.click();*/
     }
 }
