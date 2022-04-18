@@ -28,8 +28,7 @@ public class TestRunner {
 
         ContactPage contactPage = new ContactPage(webDriverManagerChrome.getWebDriver());
 
-        homePage.navigateToContactPage();
-        contactPage.fillInTheContactForm("Customer", "email@g.com", "Please let me know some details about monitor");
+
 
         try {
             Thread.sleep(30000);
