@@ -13,7 +13,7 @@ public class TestJunitRunner {
 
     @BeforeEach
     public void configureTestPreconditions() {
-        webDriverManagerChrome.getWebDriver().get("https://demo.opencart.com/");
+        webDriverManagerChrome.getWebDriver().get("https://demo-opencart.com/");
     }
 
     @AfterEach
