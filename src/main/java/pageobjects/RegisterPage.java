@@ -1,7 +1,5 @@
 package pageobjects;
 
-import managers.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -35,14 +33,30 @@ public class RegisterPage extends Page {
     @FindBy(xpath = "//*[@id=\"content\"]/form/div/div/input[2]")
     private WebElement continueButton;
 
-    public void fillInRegisterForm(String firstName, String lastName, String email, String telephone, String password) {
+    @FindBy(xpath = "//div[@class=\"text-danger\"]")
+    private WebElement errorMessage;
+
+
+
+    public void fillInRegisterForm(String firstName, String lastName, String email, String telephone, String password, String confirmPassword) {
         firstNameField.sendKeys(firstName);
         lastNameField.sendKeys(lastName);
         emailField.sendKeys(email);
         telephoneField.sendKeys(telephone);
         passwordField.sendKeys(password);
-        passwordConfirmField.sendKeys(password);
+        passwordConfirmField.sendKeys(confirmPassword);
         privacyPolicyCheckbox.click();
         continueButton.click();
+    }
+
+    public void tickCheckBox(){
+        privacyPolicyCheckbox.click();
+    }
+    public void clickContinueButton(){
+        continueButton.click();
+    }
+
+    public String getErrorMessageText(){
+       return errorMessage.getText();
     }
 }

@@ -17,7 +17,7 @@ public class TestRunner {
 
 
         RegisterPage registerPage = new RegisterPage(webDriverManagerChrome.getWebDriver());
-        registerPage.fillInRegisterForm("Tested", "Customer", "til@gmail.com", "06845799", "testedpass");
+        registerPage.fillInRegisterForm("Tested", "Customer", "til@gmail.com", "06845799", "testedpass", "testedpass");
 
         /*Test log out flow*/
 

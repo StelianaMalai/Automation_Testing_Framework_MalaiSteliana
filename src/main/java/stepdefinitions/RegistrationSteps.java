@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.jupiter.api.Assertions;
@@ -17,10 +18,11 @@ public class RegistrationSteps {
         registerPage = new RegisterPage(context.getWebDriverManager().getWebDriver());
     }
 
-    /*@Then("^registration page is displayed$")
+    @Then("^registration page is displayed$")
     public void registrationPageIsDisplayed() {
         boolean urlIsValid = context.getWebDriverManager().getWebDriver().getCurrentUrl().contains("index.php?route=account/register");
         Assertions.assertTrue(urlIsValid, "The url is not valid");
 
-    }*/
+    }
+
 }
