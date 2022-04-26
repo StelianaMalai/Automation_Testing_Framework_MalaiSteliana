@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
         features = "src/main/java/features",
         glue = "stepdefinitions",
         snippets = SnippetType.CAMELCASE,
-        tags = {},
+        tags = {"@TC3"},
         plugin = {"pretty", "html:target/cucumber-reports"}
 )
 
