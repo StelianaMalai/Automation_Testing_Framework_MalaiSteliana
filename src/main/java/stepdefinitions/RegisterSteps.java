@@ -19,8 +19,8 @@ public RegisterSteps(TestContext testContext){
     context = testContext;
     registerPage = new RegisterPage(context.getWebDriverManager().getWebDriver());
 }
-    @When("^the register field are populated with the following data:$")
-    public void theRegisterFieldArePopulatedWithTheFollowingData(Map<String, String> collectedRegisterDataMap) {
+    @When("^the register fields are populated with the following data:$")
+    public void theRegisterFieldsArePopulatedWithTheFollowingData(Map<String, String> collectedRegisterDataMap) {
         String collectedFirstName = collectedRegisterDataMap.get("firstName");
         String collectedLastName = collectedRegisterDataMap.get("lastName");
         String collectedEmail = collectedRegisterDataMap.get("email");
@@ -49,7 +49,7 @@ public RegisterSteps(TestContext testContext){
     for (int i = 0; i<keyWordList.size(); i++){
 boolean keywordIsPresentWithinTheDisplayedMessage = displayedErrorMessage.contains(keyWordList.get(i));
 
-Assertions.assertTrue(keywordIsPresentWithinTheDisplayedMessage, "The keyword is not present within the error message");
+Assertions.assertTrue(keywordIsPresentWithinTheDisplayedMessage, "The keyword is not present in the error message");
     }
 
 }

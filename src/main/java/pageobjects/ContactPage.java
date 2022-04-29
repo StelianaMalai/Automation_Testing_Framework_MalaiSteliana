@@ -10,12 +10,12 @@ public class ContactPage extends Page {
         super(driver);
     }
 
+
     @FindBy(id = "input-name")
     private WebElement yourNameField;
 
     @FindBy(id = "input-email")
     private WebElement emailAddressField;
-
 
     @FindBy(id = "input-enquiry")
     private WebElement enquiry;
@@ -26,12 +26,32 @@ public class ContactPage extends Page {
     @FindBy(xpath = "//*[@id=\"content\"]/div/div/a")
     private WebElement continueBtn;
 
+    @FindBy(xpath = "/html/body/div[2]/div/div/form/fieldset/div[2]/div/div")
+    private WebElement errorMessage;
+
+    private final String ENDPOINT = "index.php?route=information/contact";
+
+    public ContactPage goToPage() {
+        driver.get(BASE_URL + ENDPOINT);
+        return this;
+    }
 
     public void fillInTheContactForm(String name, String email, String enquiery) {
         yourNameField.sendKeys(name);
         emailAddressField.sendKeys(email);
         enquiry.sendKeys(enquiery);
-       submitBtn.click();
+        submitBtn.click();
         /*continueBtn.click();*/
+    }
+
+    public void clickSubmitButton(){
+        submitBtn.click();
+    }
+
+    public String getErrorMessageText(){
+        return errorMessage.getText();
+    }
+    public String getENDPOINT(){
+        return ENDPOINT;
     }
 }

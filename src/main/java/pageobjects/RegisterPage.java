@@ -5,7 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class RegisterPage extends Page {
-    public RegisterPage(WebDriver driver) {
+
+       public RegisterPage(WebDriver driver) {
         super(driver);
     }
 
@@ -36,6 +37,12 @@ public class RegisterPage extends Page {
     @FindBy(xpath = "//div[@class=\"text-danger\"]")
     private WebElement errorMessage;
 
+    private final String ENDPOINT = "index.php?route=account/register";
+
+    public RegisterPage goToPage() {
+        driver.get(BASE_URL + ENDPOINT);
+        return this;
+    }
 
 
     public void fillInRegisterForm(String firstName, String lastName, String email, String telephone, String password, String confirmPassword) {
@@ -48,7 +55,6 @@ public class RegisterPage extends Page {
         privacyPolicyCheckbox.click();
         continueButton.click();
     }
-
     public void tickCheckBox(){
         privacyPolicyCheckbox.click();
     }
@@ -58,5 +64,9 @@ public class RegisterPage extends Page {
 
     public String getErrorMessageText(){
        return errorMessage.getText();
+    }
+
+    public String getENDPOINT(){
+        return ENDPOINT;
     }
 }
